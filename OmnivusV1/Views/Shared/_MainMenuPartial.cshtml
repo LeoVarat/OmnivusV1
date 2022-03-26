@@ -1,8 +1,12 @@
-﻿<nav id="main-menu">
+﻿@model MainMenuViewModel
+
+<nav id="main-menu">
     <div class="menu-items">
-        <a asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-controller="Services" asp-action="Index">Serives</a>
-        <a asp-controller="Contact" asp-action="Index">Contact</a> 
+        @foreach(var link in Model.Links)
+        {
+            <a asp-controller="@link.ControllerName" asp-action="@link.ActionName">@link.DisplayName</a>
+        }
+
     </div>
     <a asp-controller="Contact" asp-action="BookMeeting" class="btn btn-main">Book a meeting</a>
 </nav>
